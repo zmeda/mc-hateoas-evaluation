@@ -40,25 +40,90 @@
 
 			<div class="slides">
 				<section>
-					<h1>Title goes here</h1>
+					<h1>HATEOAS</h1>
+					<h6>WILMA - Brand Solutions</h2>
 				</section>
 
 				<section>
 					<h2>Introduction</h2>
-					<p>
-						What it is bla bla bla foo bar 42
-					</p>
-				</section>
-				<section>
-					<h2>To HATEOAS or not HATEOAS</h2>
-				</section>
-				<section>
-					<h2>Comparison</h2>
+					<p>[H]ypermedia [a]s [t]he [E]ngine [o]f [A]pplication [S]tate</p>
+					<p>different concept on how client-server interact</p>
+					<ul>
+						<li>client interacts with server entirely through hypermedia</li>
+						<li>hypermedia is dynamically generated at server side</li>
+						<li>client needs no prior knowledge on how to interact with server</li>
+						<li>no contract like SOA</li>
+					</ul>
+
+					<img data-src="resources/glory-of-rest.png">
+
 				</section>
 				<section>
 					<section>
-						<h2>JASON-API</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
+						<h2>Benefits</h2>
+						<ul>
+
+							<li>Discoverability</li>
+							<li>Consistency</li>
+							<li>Ecosystem</li>
+							<li>Self documented API</li>
+
+							<aside class="notes">
+								<p>both human and machines understand and know how to follow links.
+								use OPTIONS and GET to explore URL and understand the relationships better.</p>
+
+								<p>the entire application (all the APIs) look and behave in similar ways</p>
+
+								<p>its not about creating a application, its about a meta-application - the web.
+								its about integration with other applications/platforms</p>
+
+								documentation won't be for a super smart client that will automatically understand and navigate the application.
+								Its to ease up the clients developers life when integrating or using our API
+							</aside>
+
+						</ul>
+					</section>
+					<section>
+						<h2>Disadvantages</h2>
+						<ul>
+
+							<li>Complexity</li>
+							<aside class="notes">
+								Its obviously more complex to build HATEOAS applications (servers)
+							</aside>
+
+							<li>Learning curve</li>
+							<aside class="notes">
+								Its something that does not come naturally to all developers.
+								There's a learning curve to understand how to effectively use HATEOAS.
+								It may lead to a crAPI.
+							</aside>
+
+							<li>Won't replace proper documentation</li>
+							<aside class="notes">
+								Some relationships won't be so common sense as the article of an order. These relationships will still need some proper documentation to be understanded
+								and used effectively.
+							</aside>
+
+						</ul>
+					</section>
+				</section>
+				<section>
+					<h2>Evaluated hypermedia formats</h2>
+					<p>JSON API</p>
+					<p>HAL - [H]ypertext [A]pplication [L]anguage</p>
+					<p>JSON-LD - [L]ynked [D]ocuments</p>
+					<p>Collections+JSON</p>
+					<p>Siren</p>
+				</section>
+				<section>
+					<section>
+						<h2>JSON API</h2>
+						<p>specification: http://jsonapi.org</p>
+						<p>designed to minimize requests and data transfered
+						<p>version 1.0 final released on 2015-05-29 [1]</p>
+						<p>own mime type registered with IANA: application/vnd.api+json[1]
+						<p>experimental support for extensions[1]</p>
 					</section>
 					<section>
 						Bam!
@@ -67,7 +132,8 @@
 				<section>
 					<section>
 						<h2>Siren</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
+						<p>specification: https://github.com/kevinswiber/siren</p>
+						<p>generic entities</p><aside class="notes">aims to represent generic entities along with actions for modifying those entities and links for client navigation</aside>
 					</section>
 					<section>
 						Bam!
@@ -88,6 +154,12 @@
 				</section>
 				<section>
 					<p>Q & A</p>
+				</section>
+				<section>
+					<h2>References</h2>
+					<ul>
+						<li>1</li>
+					</ul>
 				</section>
 
 			</div>
