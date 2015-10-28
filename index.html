@@ -71,10 +71,10 @@
 						<h2>Benefits</h2>
 						<ul>
 
-							<li>Discoverability</li>
-							<li>Consistency</li>
-							<li>Ecosystem</li>
-							<li>Self documented API</li>
+							<li class="fragment">Discoverability</li>
+							<li class="fragment">Consistency</li>
+							<li class="fragment">Ecosystem</li>
+							<li class="fragment">Self documented API</li>
 
 							<aside class="notes">
 								<p>both human and machines understand and know how to follow links.
@@ -95,22 +95,19 @@
 						<h2>Disadvantages</h2>
 						<ul>
 
-							<li>Complexity</li>
-							<aside class="notes">
-								Its obviously more complex to build HATEOAS applications (servers)
-							</aside>
+							<li class="fragment">Complexity</li>
+							<li class="fragment">Learning curve</li>
+							<li class="fragment">Won't replace proper documentation</li>
 
-							<li>Learning curve</li>
 							<aside class="notes">
-								Its something that does not come naturally to all developers.
+								<p>Its obviously more complex to build HATEOAS applications (servers)</p>
+
+								<p>Its something that does not come naturally to all developers.
 								There's a learning curve to understand how to effectively use HATEOAS.
-								It may lead to a crAPI.
-							</aside>
+								It may lead to a crAPI.</p>
 
-							<li>Won't replace proper documentation</li>
-							<aside class="notes">
-								Some relationships won't be so common sense as the article of an order. These relationships will still need some proper documentation to be understanded
-								and used effectively.
+								<p>Some relationships won't be so common sense as the article of an order. These relationships will still need some proper documentation to be understanded
+								and used effectively.</p>
 							</aside>
 
 						</ul>
@@ -131,11 +128,78 @@
 						<p>designed to minimize requests and data transfered
 						<p>version 1.0 final released on 2015-05-29 [1]</p>
 						<p>own mime type registered with IANA: application/vnd.api+json[1]
-						<p>experimental support for extensions[1]</p>
+						<p>experimental support for extensions</p>
 					</section>
 					<section>
-						Bam!
+						<h2>Example:</h2>
+						<p>Get a specific order</p>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+GET /orders/1 HTTP/1.1
+Accept: application/vnd.api+json
+							</code>
+						</pre>
+
 					</section>
+					<section>
+						<h2>Data structure</h2>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+{
+  "data": {
+    "id": "1",
+    "type": "order",
+    "links": {
+      "self": "/orders/1"
+    }
+  },
+  "attributes": null,
+  "relationships": null
+}
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>Attribute structure</h2>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+{
+  "data": null,
+  "attributes": {
+    "order-id": "1",
+    "order-number": "1010101010",
+    "shipment-number": "1012121212"
+  },
+  "relationships": null
+}
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>Relationships structure</h2>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+{
+  "data": null,
+  "attributes": null,
+  "relationships": {
+    "order-items": {
+      "data": [
+        {"id": 1, "type": "order-item"},
+        {"id": 2, "type": "order-item"}
+      ],
+      "links": {
+        "related": "/orders/1/items"
+      }
+    }
+  }
+}
+							</code>
+						</pre>
+					</section>
+
 				</section>
 				<section>
 					<section>
@@ -177,6 +241,34 @@
 					</section>
 					<section>
 						Bam!
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>PAGINATION</h2>
+					</section>
+					<section>
+						<h2>JSON API</h2>
+					</section>
+					<section>
+						<h2>SIREN</h2>
+					</section>
+					<section>
+						<h2>HAL</h2>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>SORTING</h2>
+					</section>
+					<section>
+						<h2>JSON API</h2>
+					</section>
+					<section>
+						<h2>SIREN</h2>
+					</section>
+					<section>
+						<h2>HAL</h2>
 					</section>
 				</section>
 				<section>
