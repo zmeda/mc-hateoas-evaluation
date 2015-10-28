@@ -43,7 +43,6 @@
 					<h1>HATEOAS</h1>
 					<h6>WILMA - Brand Solutions</h2>
 				</section>
-
 				<section>
 					<h2>Introduction</h2>
 					<p>[H]ypermedia [a]s [t]he [E]ngine [o]f [A]pplication [S]tate</p>
@@ -57,6 +56,15 @@
 
 					<img data-src="resources/glory-of-rest.png">
 
+				</section>
+				<section>
+					<h2>Motivation</h2>
+					<p></p>
+					<ul>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
 				</section>
 				<section>
 					<section>
@@ -132,8 +140,31 @@
 				<section>
 					<section>
 						<h2>Siren</h2>
-						<p>specification: https://github.com/kevinswiber/siren</p>
-						<p>generic entities</p><aside class="notes">aims to represent generic entities along with actions for modifying those entities and links for client navigation</aside>
+						<p>Siren is a hypermedia specification for representing entities.</p>
+						<p class="fragment">Entity consits of:</p>
+						<ul>
+							<li class="fragment">class definition</li>
+							<li class="fragment">title</li>
+							<li class="fragment">properties</li>
+							<li class="fragment">(sub)entities</li>
+							<li class="fragment">links</li>
+							<li class="fragment">actions</li>
+						</ul>
+						<aside class="notes">
+							Entities are natural representation and well known in IT world.
+							<br/>
+							Class definition - identifies the entity's purpose.
+							<br/>
+							Title - descriptive text about the entity.
+							<br/>
+							Properties - a set of key-value pairs describing the state of the entity.
+							<br/>
+							(sub)entities - a collection of related sub entities. Important part is the relation between the parent and a child entity.
+							<br/>
+							links - non-entity based relation bind to the entity.
+							<br/>
+							actions - a collection of actions that can change the state of the entity.
+						</aside>
 					</section>
 					<section>
 						Bam!
