@@ -59,11 +59,15 @@
 				</section>
 				<section>
 					<h2>Motivation</h2>
-					<p></p>
+					<p>Initial user feedback</p>
 					<ul>
-						<li></li>
-						<li></li>
-						<li></li>
+						<li>Which are the possible state transitions (from current state)?
+							<ul>
+								<li>Duplicated logic on server and client side</li>
+							</ul>
+						</li>
+						<li>How to sort, filter, paginate?</li>
+						<li>Where is the picture of article?</li>
 					</ul>
 				</section>
 				<section>
@@ -231,7 +235,145 @@ Accept: application/vnd.api+json
 						</aside>
 					</section>
 					<section>
-						Bam!
+						<h2>Example:</h2>
+						<p>Get a specific order</p>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+GET /orders/1 HTTP/1.1
+Response: application/vnd.siren+json
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>Class</h2>
+						<p>Define entitiy's purpose.</p>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+{
+  "class": [ "order" ],
+  "title": "",
+  "properties": {},
+  "entities": [],
+  "links": [],
+  "actions": []
+}
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>Title</h2>
+						<p>Descriptive text about the entity.</p>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+{
+  "class": [],
+  "title": "An order entity which represents the top level order.",
+  "properties": {},
+  "entities": [],
+  "links": [],
+  "actions": []
+}
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>Properties</h2>
+						<p>A set of key-value pairs describing the state of the entity.</p>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+{
+  "class": [],
+  "title": "",
+  "properties": {
+    "order-id": "1",
+    "order-number": "1010101010",
+    "shipment-number": "1012121212"
+  },
+  "entities": [],
+  "links": [],
+  "actions": []
+}
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>Entities</h2>
+						<p>A collection of related sub entities. Important part is the relation between the parent and a child entity.</p>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+{
+  "class": [],
+  "title": "",
+  "properties": {},
+  "entities": [
+    {
+      "class": [ "items", "collection" ],
+      "rel": [ "/rels/order-items" ],
+      "href": "/orders/1/items"
+    }
+  ],
+  "links": [],
+  "actions": []
+}
+							</code>
+						</pre>
+						<aside class="notes">
+							Sub entity could be either embedded link or embedded representation.
+						</aside>
+					</section>
+					<section>
+						<h2>Links</h2>
+						<p>Non-entity based relation bound to the entity.</p>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+{
+  "class": [],
+  "title": "",
+  "properties": {},
+  "entities": [],
+  "links": [
+    { 
+      "rel": [ "self" ], 
+      "href": "/orders/1/"
+    }
+  ],
+  "actions": []
+}
+							</code>
+						</pre>
+						<aside class="notes">
+							Difference between embedded entities and links. Links are used for linking something outside of application domain (in our case article). Embedded entities are used normally within the same context (in our case order, order-line, order-item).
+						</aside>
+					</section>
+					<section>
+						<h2>Actions</h2>
+						<p>A collection of actions that can change the state of the entity.</p>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+{
+  "class": [],
+  "title": "",
+  "properties": {},
+  "entities": [],
+  "links": [],
+  "actions": [
+    {
+      "name": "update-order-status",
+      "title": "Updatean order status",
+      "method": "POST",
+      "href": "/orders/1",
+      "type": "application/json",
+      "fields": [
+        { "name": "status", "type": "radio", "value": "approved" }
+      ]
+    }
+  ]
+}
+							</code>
+						</pre>
+						<aside class="notes">
+							With the use of "radio" button we can easily manipulate state transitions.
+						</aside>
 					</section>
 				</section>
 				<section>
