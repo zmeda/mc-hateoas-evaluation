@@ -1,3 +1,3 @@
 # HATEOAS
 
-## [Presentation](https:zmeda.github.io/mc-hateoas-evaluation)
+## [Presentation](https://zmeda.github.io/mc-hateoas-evaluation)
