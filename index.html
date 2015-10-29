@@ -468,8 +468,30 @@ Accept: application/hal+json
 						<pre>
 							<code class="hljs" data-trim contenteditable>
 {
-  "_links": {},
+  "_links": {
+    "self": { "href": "/orders/1" }
+  },
   "_embedded": {},
+  "order-id": "1",
+  "order-number": "1010101010",
+  "shipment-number": "1012121212"
+}
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>Resources</h2>
+						<p></p>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+{
+  "_links": {},
+  "_embedded": {
+    "items": [{
+      "_links": { "self": { "href": "/orders/1/items/1"}},
+      "order_item_id": "1"
+    }]
+  },
   "order-id": "1",
   "order-number": "1010101010",
   "shipment-number": "1012121212"
