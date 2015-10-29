@@ -44,31 +44,42 @@
 					<h6>WILMA - Brand Solutions</h2>
 				</section>
 				<section>
-					<h2>Introduction</h2>
-					<p>[H]ypermedia [a]s [t]he [E]ngine [o]f [A]pplication [S]tate</p>
-					<p>different concept on how client-server interact</p>
-					<ul>
-						<li>client interacts with server entirely through hypermedia</li>
-						<li>hypermedia is dynamically generated at server side</li>
-						<li>client needs no prior knowledge on how to interact with server</li>
-						<li>no contract like SOA</li>
-					</ul>
+					<section>
+						<h2>Introduction</h2>
+						<div align="left">
+							<p>[H]ypermedia [a]s [t]he [E]ngine [o]f [A]pplication [S]tate</p>
+							<p>Standard/Specification on how servers and clients interact</p>
+						</div>
+						<div align="center"><img data-src="resources/glory-of-rest.png"></div>
+					</section>
 
-					<img data-src="resources/glory-of-rest.png">
+					<section>
+						<h2>Introduction</h2>
+						<div align="left">
+							<ul>
+								<li>client interacts with server entirely through hypermedia</li>
+								<li>hypermedia is dynamically generated at server side</li>
+								<li>client needs no prior knowledge on how to interact with server</li>
+								<li>no contract like SOA</li>
+							</ul>
+						</div>
+					</section>
 
 				</section>
 				<section>
 					<h2>Motivation</h2>
-					<p>Initial user feedback</p>
-					<ul>
-						<li>Which are the possible state transitions (from current state)?
-							<ul>
-								<li>Duplicated logic on server and client side</li>
-							</ul>
-						</li>
-						<li>How to sort, filter, paginate?</li>
-						<li>Where is the picture of article?</li>
-					</ul>
+					<div align="left">
+						<p>Initial user feedback</p>
+						<ul>
+							<li>Which are the possible state transitions (from current state)?
+								<ul>
+									<li>Duplicated logic on server and client side</li>
+								</ul>
+							</li>
+							<li>How to sort, filter, paginate?</li>
+							<li>Where is the picture of article?</li>
+						</ul>
+					</div>
 				</section>
 				<section>
 					<section>
@@ -131,9 +142,34 @@
 				<section>
 					<section>
 						<h2><a href="http://jsonapi.org">JSON API</a></h2>
-						<p>designed to minimize requests and data transfered</p>
-						<p>Last update: 2015-05-29</p>
-						<p>Support: experimental support for extensions</p>
+						<div align="left">
+							<p>Purpose:</p>
+								<ul>
+									<li>minimize requests and data transfered</li>
+									<li>speed up API development</li>
+									<li>built by the community</li>
+									<li>future-proof</li>
+									<li>avoid bike shedding</li>
+								</ul>
+							<p>Last update: 2015-05-29</p>
+							<p>Extendable</p>
+						</div>
+
+						<aside class="notes">
+							It is a specification for how a client should request/update resources and how a server should answer to those requests. <br/>
+
+							1. The efficiency is achieved without compromising readability, flexibility or discoverability.<br/>
+							2. Convention over configuration - using standards instead of writing the API for the specific use cases. <br/>
+							3. During the specification draft, all issues were raised via the GitHub repo and discussed publicly with the community.<br/>
+							4. They promise that new versions will *always* be backwards compatible.<br/>
+							5. Statistically, a developers team will argue more about the bike's color than the bike's wheels
+
+							Version 1.0 is recent (May this year) and they are currently working on version 1.1. <br/>
+
+							Currently there are some experimental, oficial and custom extensions, for example: multiple operations in single request
+
+						</aside>
+
 					</section>
 					<section>
 						<h2>Example:</h2>
@@ -185,8 +221,7 @@ Accept: application/vnd.api+json
     },
     "attributes": "...",
     "relationships": "..."
-  },
-  // ...
+  }// ...
 }
 							</code>
 						</pre>
@@ -214,8 +249,7 @@ Accept: application/vnd.api+json
       "status": "approved"
     },
     "relationships": "..."
-  },
-  // ...
+  }// ...
 }
 							</code>
 						</pre>
@@ -257,14 +291,14 @@ Accept: application/vnd.api+json
     "id": "1",
     "type": "order",
     "links": "...",
-		"attributes": "...",
-	  "relationships": "..."
+    "attributes": "...",
+    "relationships": "..."
   },
   "meta": {
-		"order-items-count": 2,
-		"order-lines-count": 3,
-		"full-order-price": "1000"
-	}
+    "order-items-count": 2,
+    "order-lines-count": 3,
+    "full-order-price": "1000"
+  }
 }
 							</code>
 						</pre>
@@ -399,8 +433,8 @@ Response: application/vnd.siren+json
   "properties": {},
   "entities": [],
   "links": [
-    { 
-      "rel": [ "self" ], 
+    {
+      "rel": [ "self" ],
       "href": "/orders/1/"
     }
   ],
