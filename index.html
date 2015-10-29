@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js – The HTML Presentation Framework</title>
+		<title>HATEOAS</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="HATEOAS - Why? What? How?">
+		<meta name="author" content="Sergio Goncalves & Boris Malensek">
 
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -28,20 +28,23 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
-
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
 	</head>
-
 	<body>
-
 		<div class="reveal">
-
 			<div class="slides">
 				<section>
 					<h1>HATEOAS</h1>
-					<h6>WILMA - Brand Solutions</h2>
+					<h6>WILMA - Brand Solutions</h6>
+					<p><a href="https://twitter.com/zmeda">@zmeda</a></p>
+				</section>
+				<section>
+					<div>
+						<img src="resources/hatersgonnacat.jpg" style="position:relative;display:block;width:100%;margin:0;padding:0;border:none;max-width:100%;max-height:100%">
+						<img src="resources/os-wars.png" style="position:absolute;display:block;width:15%;top:5px;right:25px;border:none;background:transparent">
+					</div>
 				</section>
 				<section>
 					<h2>Introduction</h2>
@@ -53,9 +56,7 @@
 						<li>client needs no prior knowledge on how to interact with server</li>
 						<li>no contract like SOA</li>
 					</ul>
-
 					<img data-src="resources/glory-of-rest.png">
-
 				</section>
 				<section>
 					<h2>Motivation</h2>
@@ -74,12 +75,10 @@
 					<section>
 						<h2>Benefits</h2>
 						<ul>
-
 							<li class="fragment">Discoverability</li>
 							<li class="fragment">Consistency</li>
 							<li class="fragment">Ecosystem</li>
 							<li class="fragment">Self documented API</li>
-
 							<aside class="notes">
 								<p>both human and machines understand and know how to follow links.
 								use OPTIONS and GET to explore URL and understand the relationships better.</p>
@@ -92,17 +91,14 @@
 								documentation won't be for a super smart client that will automatically understand and navigate the application.
 								Its to ease up the clients developers life when integrating or using our API
 							</aside>
-
 						</ul>
 					</section>
 					<section>
 						<h2>Disadvantages</h2>
 						<ul>
-
 							<li class="fragment">Complexity</li>
 							<li class="fragment">Learning curve</li>
 							<li class="fragment">Won't replace proper documentation</li>
-
 							<aside class="notes">
 								<p>Its obviously more complex to build HATEOAS applications (servers)</p>
 
@@ -113,20 +109,32 @@
 								<p>Some relationships won't be so common sense as the article of an order. These relationships will still need some proper documentation to be understanded
 								and used effectively.</p>
 							</aside>
-
 						</ul>
 					</section>
 				</section>
 				<section>
-					<h2>Evaluation</h2>
-					<p>Known hypermedia specifications:</p>
-					<ul>
-						<li>Collections+JSON</li>
-						<li>HAL</li>
-						<li>JSON-LD</li>
-						<li>JSON API</li>
-						<li>Siren</li>
-					</ul>
+					<section>
+						<h2>Evaluation</h2>
+						<p>Known hypermedia specifications:</p>
+						<ul>
+							<li>Collections+JSON</li>
+							<li>HAL</li>
+							<li>JSON-LD</li>
+							<li>JSON API</li>
+							<li>Siren</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Evaluation</h2>
+						<p>Known hypermedia specifications:</p>
+						<ul>
+							<li>Collections+JSON</li>
+							<li style="color:#229999">HAL</li>
+							<li>JSON-LD</li>
+							<li style="color:#229999">JSON API</li>
+							<li style="color:#229999">Siren</li>
+						</ul>
+					</section>
 				</section>
 				<section>
 					<section>
@@ -144,7 +152,6 @@ GET /orders/1 HTTP/1.1
 Accept: application/vnd.api+json
 							</code>
 						</pre>
-
 					</section>
 					<section>
 						<h2>Document structure</h2>
@@ -171,7 +178,6 @@ Accept: application/vnd.api+json
 							"JSONAPI" - description of server's implementation
 						</aside>
 					</section>
-
 					<section>
 						<h2>Data structure</h2>
 						<pre>
@@ -197,7 +203,6 @@ Accept: application/vnd.api+json
 							May contain links for the resource or related resources.
 						</aside>
 					</section>
-
 					<section>
 						<h2>Data structure: Attributes</h2>
 						<pre>
@@ -220,7 +225,6 @@ Accept: application/vnd.api+json
 							</code>
 						</pre>
 					</section>
-
 					<section>
 						<h2>Data structure: relationships</h2>
 						<pre>
@@ -247,7 +251,6 @@ Accept: application/vnd.api+json
 							</code>
 						</pre>
 					</section>
-
 					<section>
 						<h2>Meta structure</h2>
 						<pre>
@@ -505,7 +508,6 @@ Accept: application/hal+json
 					</section>
 					<section>
 						<h2>JSON API</h2>
-
 						<pre>
 							<code class="hljs" data-trim contenteditable>
 
@@ -554,74 +556,73 @@ Accept: application/hal+json
 
 							</code>
 						</pre>
-
 					</section>
 					<section>
 						<h2>SIREN</h2>
-					</section>
-					<section>
-						<h2>HAL</h2>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>SORTING</h2>
-					</section>
-					<section>
-						<h2>JSON API</h2>
 						<pre>
 							<code class="hljs" data-trim contenteditable>
+
 {
-  "data": [
-    {
-      "type": "orders",
-      "id": "1",
-      "attributes": {
-        "orderNumber": "1010121312379",
-        "shipment-number": "1010123123",
-        "status": "approved",
-        "created_at": "2013-01-01T23:28:56.782Z"
-      }
-    },
-    {
-      "type": "orders",
-      "id": "2",
-      "attributes": {
-        "orderNumber": "1010121312380",
-        "shipment-number": "1010123124",
-        "status": "approved",
-        "created_at": "2014-01-01T23:28:56.782Z"
-      }
-    },
-    {
-      "type": "orders",
-      "id": "3",
-      "attributes": {
-        "orderNumber": "1010121312381",
-        "shipment-number": "1010123123",
-        "status": "initial",
-        "created_at": "2015-01-01T23:28:56.782Z"
-      }
-    }
+  "class": [ "orders", "collection" ],
+  "title": "A list of orders",
+  "properties": {},
+  "entities": [],
+  "links": [
+    { "rel": [ "self" ], "href": "/orders/1/" },
+    { "rel": [ "first" ], "href": "/orders?page[cursor]=XYZ0" },
+    { "rel": [ "next" ], "href": "/orders?page[cursor]=XYZ1" },
+    { "rel": [ "last" ], "href": "/orders?page[cursor]=XYZN" },
   ],
-  "links": "...",
-	"meta": "..."
+  "actions": []
 }
+
 
 							</code>
 						</pre>
 					</section>
 					<section>
-
-						<h2>SIREN</h2>
-					</section>
-					<section>
 						<h2>HAL</h2>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+
+{
+  "_links": {
+    "self": { "href": "/orders/1/" },
+    "first": { "href": "/orders?page[cursor]=XYZ0" },
+    "next": { "href": "/orders?page[cursor]=XYZ1" },
+    "last": { "href": "/orders?page[cursor]=XYZN" },
+  },
+  "_embedded": []
+}
+
+
+							</code>
+						</pre>
 					</section>
 				</section>
 				<section>
+					<h2>SORTING</h2>
+					<p>Sorting is not directly a part of HATEOAS.</p>
+					<p>Best practice:</p>
+					<pre>
+						<code class="hljs" data-trim contenteditable>
+GET /orders?sort=-created_at,status HTTP/1.1
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>FILTERING</h2>
+					<p>Filtering is not directly a part of HATEOAS.</p>
+					<p>Best practice:</p>
+					<pre>
+						<code class="hljs" data-trim contenteditable>
+GET /orders?status=initial HTTP/1.1
+						</code>
+					</pre>
+				</section>
+				<section>
 					<h2>Conclusion</h2>
-					<p>Team decision!</p>
+					<p>Team decision / Open discussion</p>
 				</section>
 				<section>
 					<h2>References</h2>
