@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>HATEOAS</title>
+		<title>reveal.js – The HTML Presentation Framework</title>
 
-		<meta name="description" content="A description of HATEOAS with the examples of well-known standards">
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
 
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -142,48 +142,91 @@ Accept: application/vnd.api+json
 
 					</section>
 					<section>
-						<h2>Data structure</h2>
+						<h2>Document structure</h2>
 						<pre>
 							<code class="hljs" data-trim contenteditable>
+{
+  "data": null,
+  "errors": null,
+  "meta": null,
+  "links": null,
+  "included": null,
+  "jsonapi": null
+}
+							</code>
+						</pre>
+
+						<aside class="notes">
+							Every document should have one of "data", "errors" or "meta". The others are optional. <br/>
+							"DATA" - where the actual data is provided <br/>
+							"ERRORS" - in case some error happened <br/>
+							"META" - for non-standard meta information <br/>
+							"LINKS" - links for the main data represented <br/>
+							"INCLUDED" - in case the client requests embeded data <br/>
+							"JSONAPI" - description of server's implementation
+						</aside>
+					</section>
+
+					<section>
+						<h2>Data structure</h2>
+						<pre>
+							<code class="hljs" data-trim contenteditable width="200px" max-height="auto">
 {
   "data": {
     "id": "1",
     "type": "order",
     "links": {
       "self": "/orders/1"
-    }
+    },
+    "attributes": "...",
+    "relationships": "..."
   },
-  "attributes": null,
-  "relationships": null
+  // ...
+}
+							</code>
+						</pre>
+
+						<aside class="notes">
+							A resource object must always contain its type and ID. <br/>
+							The properties of the resource go inside the attributes object <br/>
+							May contain links for the resource or related resources.
+						</aside>
+					</section>
+
+					<section>
+						<h2>Data structure: Attributes</h2>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+{
+  "data": {
+    "id": "1",
+    "type": "order",
+    "links": "...",
+    "attributes": {
+      "order-id": "1",
+      "order-number": "1010101010",
+      "shipment-number": "1012121212",
+      "status": "approved"
+    },
+    "relationships": "..."
+  },
+  // ...
 }
 							</code>
 						</pre>
 					</section>
 
 					<section>
-						<h2>Attribute structure</h2>
+						<h2>Data structure: relationships</h2>
 						<pre>
 							<code class="hljs" data-trim contenteditable>
 {
-  "data": null,
-  "attributes": {
-    "order-id": "1",
-    "order-number": "1010101010",
-    "shipment-number": "1012121212"
+  "data": {
+    "id": "1",
+    "type": "order",
+    "links": "..."
   },
-  "relationships": null
-}
-							</code>
-						</pre>
-					</section>
-
-					<section>
-						<h2>Relationships structure</h2>
-						<pre>
-							<code class="hljs" data-trim contenteditable>
-{
-  "data": null,
-  "attributes": null,
+  "attributes": "...",
   "relationships": {
     "order-items": {
       "data": [
@@ -195,6 +238,28 @@ Accept: application/vnd.api+json
       }
     }
   }
+}
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>Meta structure</h2>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+{
+  "data": {
+    "id": "1",
+    "type": "order",
+    "links": "...",
+		"attributes": "...",
+	  "relationships": "..."
+  },
+  "meta": {
+		"order-items-count": 2,
+		"order-lines-count": 3,
+		"full-order-price": "1000"
+	}
 }
 							</code>
 						</pre>
@@ -249,6 +314,56 @@ Accept: application/vnd.api+json
 					</section>
 					<section>
 						<h2>JSON API</h2>
+
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+
+{
+  "meta": {
+    "count": 3
+  },
+  "data": [
+    {
+      "type": "order",
+      "id": "1",
+      "attributes": {
+        "order-number": "1010121312379",
+        "shipment-number": "1010123123",
+        "status": "approved"
+      }
+    },
+    {
+      "type": "order",
+      "id": "2",
+      "attributes": {
+        "order-number": "1010121312380",
+        "shipment-number": "1010123124",
+        "status": "approved"
+      }
+    },
+    {
+      "type": "order",
+      "id": "3",
+      "attributes": {
+        "order-number": "1010121312381",
+        "shipment-number": "1010123123",
+        "status": "initial"
+      }
+    }
+  ],
+  "links": {
+    "self": "/orders?page[cursor]=XYZ0",
+    "first": "/orders?page[cursor]=XYZ0",
+    "prev": null,
+    "next": "/orders?page[cursor]=XYZ1",
+    "last": "/orders?page[cursor]=XYZN"
+  }
+}
+
+
+							</code>
+						</pre>
+
 					</section>
 					<section>
 						<h2>SIREN</h2>
@@ -263,8 +378,50 @@ Accept: application/vnd.api+json
 					</section>
 					<section>
 						<h2>JSON API</h2>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+{
+  "data": [
+    {
+      "type": "orders",
+      "id": "1",
+      "attributes": {
+        "orderNumber": "1010121312379",
+        "shipment-number": "1010123123",
+        "status": "approved",
+        "created_at": "2013-01-01T23:28:56.782Z"
+      }
+    },
+    {
+      "type": "orders",
+      "id": "2",
+      "attributes": {
+        "orderNumber": "1010121312380",
+        "shipment-number": "1010123124",
+        "status": "approved",
+        "created_at": "2014-01-01T23:28:56.782Z"
+      }
+    },
+    {
+      "type": "orders",
+      "id": "3",
+      "attributes": {
+        "orderNumber": "1010121312381",
+        "shipment-number": "1010123123",
+        "status": "initial",
+        "created_at": "2015-01-01T23:28:56.782Z"
+      }
+    }
+  ],
+  "links": "...",
+	"meta": "..."
+}
+
+							</code>
+						</pre>
 					</section>
 					<section>
+
 						<h2>SIREN</h2>
 					</section>
 					<section>
