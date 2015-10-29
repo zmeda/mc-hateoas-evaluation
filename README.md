@@ -2,4 +2,4 @@
 
 ## Evalutaion of the HATEOAS
 
-[Presentation](https://zmeda.github.io/mc-hateoas-evaluation) by [reveal.js](https://github.com/hakimel/reveal.js)
+We evaluated several HATEOAS compliant standards. [Here](https://zmeda.github.io/mc-hateoas-evaluation) is a presentation about evaluation made by [reveal.js](https://github.com/hakimel/reveal.js)
